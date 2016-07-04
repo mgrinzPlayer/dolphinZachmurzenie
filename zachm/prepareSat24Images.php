@@ -50,7 +50,7 @@
  $sat24Images = '<p>Zachmurzenie co: ' . $interval*5 . ' minut</p>';
  for ($i = 0; $i < $numberOfImages; $i++) {
    date_default_timezone_set('Europe/Warsaw');
-   $sat24Images .= '<p>Stan z ' . date('Y-m-d H:i',$currentTime-$i*$interval*5*60) . ':';
+   $sat24Images .= '<p>Stan z ' . date('Y-m-d H:i',$currentTime-$i*$interval*5*60) . ':<br>';
    date_default_timezone_set('UTC');
    $datestring = date('YmdHi',$currentTime-$i*$interval*5*60);
    $sat24Images .= "<img src='" . $prefix . $datestring . "' alt='" . $datestring . "' align='middle'/>";
