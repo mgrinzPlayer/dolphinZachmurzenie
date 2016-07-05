@@ -2,6 +2,7 @@
  require_once( '../inc/header.inc.php' );
  require_once( BX_DIRECTORY_PATH_INC . 'design.inc.php' );
  require_once( BX_DIRECTORY_PATH_INC . 'profiles.inc.php' );
+ $zachmLocation = './zachm';
  require_once( 'prepareSat24Images.php' );
 
  $_page['header'] = "Zachmurzenie";
