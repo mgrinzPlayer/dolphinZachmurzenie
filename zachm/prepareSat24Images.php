@@ -7,7 +7,11 @@
  //http://pl.sat24.com/image/zoom?type=visual&region=EU&x=2280&y=1140&timestamp=201607041410 połudn.-wsch
 
  $numberOfImages = 5;
- $currentTime = time();
+
+ //$currentTime = time();
+ preg_match('/([\.\w]*)\s/',file_get_contents("http://www.timeanddate.com/scripts/ts.php"),$currentTime);
+ $currentTime = intval($currentTime[1]);
+
  $currentTime = $currentTime - ( $currentTime % (5*60) ) - 5*60;
 
 
