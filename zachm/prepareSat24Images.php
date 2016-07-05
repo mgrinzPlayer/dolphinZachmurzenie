@@ -6,7 +6,8 @@
  //http://pl.sat24.com/image/zoom?type=visual&region=EU&x=1950&y=1140&timestamp=201607041410 połudn.-zach
  //http://pl.sat24.com/image/zoom?type=visual&region=EU&x=2280&y=1140&timestamp=201607041410 połudn.-wsch
 
- $numberOfImages = 5;
+ $numberOfImages = ( isset($_GET['num']) ) ? (int) $_GET['num'] : 5;
+ if ( $numberOfImages <= 0 ) { $numberOfImages = 5;}
 
  //$currentTime = time();
  //*
