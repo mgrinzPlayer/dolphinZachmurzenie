@@ -22,7 +22,7 @@
  $customCode  = $ustawienia; // ustawienia
  $customCode .= "<div class='bx-def-bh-margin'>"; // dodaj marginesy
  $customCode .= $sat24Images;
- $customCode .= "<br><a href='./zachm/light.php?zachmlang=" . $zachmLanguage . "'>" . $zachmLinkText . "</a>"; // link do wersji light
+ $customCode .= "<br><a href='./zachm/light.php?l=" . $zachmLanguage . "'>" . $zachmLinkText . "</a>"; // link do wersji light
  $customCode .= "</div>";
 
  $_page_cont[$_ni]['page_main_code'] = $customCode;

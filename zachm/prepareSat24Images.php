@@ -6,7 +6,7 @@
  //http://pl.sat24.com/image/zoom?type=visual&region=EU&x=1950&y=1140&timestamp=201607041410 połudn.-zach
  //http://pl.sat24.com/image/zoom?type=visual&region=EU&x=2280&y=1140&timestamp=201607041410 połudn.-wsch
 
- $zachmLanguage = ( isset($_GET['zachmlang']) ) ? $_GET['zachmlang'] : $zachmLanguage;
+ $zachmLanguage = ( isset($_GET['l']) ) ? $_GET['l'] : $zachmLanguage;
 
  // Tłumaczenia:
  if ($zachmLanguage == 'pl') {
@@ -107,7 +107,7 @@
                     background-color:transparent">
           <span style="line-height:38px;">Region:</span>&nbsp;
           <select style="vertical-align:middle;height:38px;border-radius:6px;"
-            onchange="window.location='$zachmLocation?zachmlang=$zachmLanguage&amp;region=' + this.value + '&amp;interval=$interval'">
+            onchange="window.location='$zachmLocation?l=$zachmLanguage&amp;region=' + this.value + '&amp;interval=$interval'">
             $optionsRegion
           </select>
         </div>
@@ -126,7 +126,7 @@
                     background-color:transparent">
           <span style="line-height:38px;">$zachmIntervalInMinutesText</span>
           <select style="vertical-align:middle;height:38px;border-radius:6px;"
-            onchange="window.location='$zachmLocation?zachmlang=$zachmLanguage&amp;region=$region&amp;interval=' + this.value">
+            onchange="window.location='$zachmLocation?l=$zachmLanguage&amp;region=$region&amp;interval=' + this.value">
             $optionsInterval
           </select>
         </div>
