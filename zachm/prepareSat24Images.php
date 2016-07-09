@@ -6,6 +6,26 @@
  //http://pl.sat24.com/image/zoom?type=visual&region=EU&x=1950&y=1140&timestamp=201607041410 połudn.-zach
  //http://pl.sat24.com/image/zoom?type=visual&region=EU&x=2280&y=1140&timestamp=201607041410 połudn.-wsch
 
+ $zachmLanguage = ( isset($_GET['zachmlang']) ) ? $_GET['zachmlang'] : $zachmLanguage;
+
+ // Tłumaczenia:
+ if ($zachmLanguage == 'pl') {
+   $regions = array('Cała Polska','Półn.-Zach.','Półn.-Wsch.',
+                    'Połudn.-Zach.','Połudn.-Wsch.','Centrum Polski');
+   $zachmEveryXminutesText = 'Zachmurzenie co: ';
+   $zachmSnapshotFromTimeText = 'Stan z ';
+   $zachmIntervalInMinutesText = 'Odstęp w minutach:';
+
+ } else {
+   $regions = array('Poland','Poland: NW','Poland: NE',
+                    'Poland: SW','Poland: SE','Poland: Central');
+   $zachmEveryXminutesText = 'Interval: ';
+   $zachmSnapshotFromTimeText = 'Snapshot from ';
+   $zachmIntervalInMinutesText = 'Interval in minutes:';
+
+ }
+ /// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
  $numberOfImages = ( isset($_GET['num']) ) ? (int) $_GET['num'] : 5;
  if ( $numberOfImages <= 0 ) { $numberOfImages = 5;}
 
@@ -43,10 +63,6 @@
  $region = ( isset($_GET['region']) ) ? (int) $_GET['region'] : 0;
  if ( $region < 0 ) { $region = 0;}
 
- $regions = array('Cała Polska','Półn.-Zach.','Półn.-Wsch.',
-                  'Połudn.-Zach.','Połudn.-Wsch.','Centrum');
-
-
  $optionsRegion = '';
  foreach ($regions as $key => $value) {
    $optionsRegion .= "<option value='" . $key . "'" . ( $region==$key ? " selected='selected'" : "" ) . ">" .
@@ -66,10 +82,10 @@
 
 
  // ostatnie $numberOfImages obrazków
- $sat24Images = '<p>Zachmurzenie co: ' . $interval*5 . ' minut</p>';
+ $sat24Images = '<p>' . $zachmEveryXminutesText . $interval*5 . ' min.</p>';
  for ($i = 0; $i < $numberOfImages; $i++) {
    date_default_timezone_set('Europe/Warsaw');
-   $sat24Images .= "<p>Stan z " . date('Y-m-d H:i',$currentTime-$i*$interval*5*60) . ":<br>\r\n";
+   $sat24Images .= "<p>" . $zachmSnapshotFromTimeText . date('Y-m-d H:i',$currentTime-$i*$interval*5*60) . ":<br>\r\n";
    date_default_timezone_set('UTC');
    $datestring = date('YmdHi',$currentTime-$i*$interval*5*60);
    $sat24Images .= "<img src='" . $prefix . $datestring . "' alt='" . $datestring . "'/>";
@@ -91,7 +107,7 @@
                     background-color:transparent">
           <span style="line-height:38px;">Region:</span>&nbsp;
           <select style="vertical-align:middle;height:38px;border-radius:6px;"
-            onchange="window.location='$zachmLocation?region=' + this.value + '&amp;interval=$interval'">
+            onchange="window.location='$zachmLocation?zachmlang=$zachmLanguage&amp;region=' + this.value + '&amp;interval=$interval'">
             $optionsRegion
           </select>
         </div>
@@ -108,9 +124,9 @@
                     padding:0px;
                     border:none;
                     background-color:transparent">
-          <span style="line-height:38px;">Odstęp w minutach:</span>
+          <span style="line-height:38px;">$zachmIntervalInMinutesText</span>
           <select style="vertical-align:middle;height:38px;border-radius:6px;"
-            onchange="window.location='$zachmLocation?region=$region&amp;interval=' + this.value">
+            onchange="window.location='$zachmLocation?zachmlang=$zachmLanguage&amp;region=$region&amp;interval=' + this.value">
             $optionsInterval
           </select>
         </div>

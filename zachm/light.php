@@ -1,5 +1,6 @@
 <?php
  $zachmLocation = './light.php';
+ $zachmLanguage = 'pl'; // domyślnie j.pol.
  require_once( 'prepareSat24Images.php' );
 
  echo <<<EOD
