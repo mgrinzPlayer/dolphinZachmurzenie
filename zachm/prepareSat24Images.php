@@ -15,6 +15,7 @@
    $zachmEveryXminutesText = 'Zachmurzenie co: ';
    $zachmSnapshotFromTimeText = 'Stan z ';
    $zachmIntervalInMinutesText = 'Odstęp w minutach:';
+   $zachmImagesProvidedBy = 'Materiały dostarczone przez: ';
 
  } else {
    $regions = array('Poland','Poland: NW','Poland: NE',
@@ -22,6 +23,7 @@
    $zachmEveryXminutesText = 'Interval: ';
    $zachmSnapshotFromTimeText = 'Snapshot from ';
    $zachmIntervalInMinutesText = 'Interval in minutes:';
+   $zachmImagesProvidedBy = 'Images provided by: ';
 
  }
  /// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,7 +84,8 @@
 
 
  // ostatnie $numberOfImages obrazków
- $sat24Images = '<p>' . $zachmEveryXminutesText . $interval*5 . ' min.</p>';
+ $sat24Images = '<p>' . $zachmEveryXminutesText . $interval*5 . ' min. ';
+ $sat24Images .= $zachmImagesProvidedBy . "<a target='_blank' rel='nofollow' href='http://sat24.com/'>sat24.com</a></p>";
  for ($i = 0; $i < $numberOfImages; $i++) {
    date_default_timezone_set('Europe/Warsaw');
    $sat24Images .= "<p>" . $zachmSnapshotFromTimeText . date('Y-m-d H:i',$currentTime-$i*$interval*5*60) . ":<br>\r\n";
